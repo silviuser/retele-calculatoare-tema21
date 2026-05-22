@@ -1,0 +1,11 @@
+services:
+  server:
+    build: ./server
+    container_name: dist-server
+    ports:
+      - "5000:5000"
+    # Permite serverului din container sa reziolveze "host.docker.internal" la host;
+    # nu il folosim explicit (clientii ne spun ei portul, iar adresa de peer e
+    # gateway-ul Docker), dar e util pentru debug pe Linux.
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
